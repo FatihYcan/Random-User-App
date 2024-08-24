@@ -47,8 +47,8 @@ Bu proje, React.js ve Bootstrap kullanarak yapılmış basit bir rastgele kullan
 - Bootstrap
 - Axios
 - SweetAlert2
-
-[Live](https://fy-random-user-app.netlify.app/)
-
 - [Randomuser.me API](https://randomuser.me/)
 
+https://github.com/user-attachments/assets/f9413104-5641-497b-9eec-380bc05f433b
+
+[Live](https://fy-random-user-app.netlify.app/)

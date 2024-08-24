@@ -37,13 +37,20 @@ function App() {
   });
 
   const [user, setUser] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const url = "https://randomuser.me/api";
 
   const getUser = () => {
+    setLoading(true);
     axios(url)
-      .then((res) => setUsers(res.data.results[0]))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        setUsers(res.data.results[0]);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   useEffect(() => {
@@ -79,141 +86,147 @@ function App() {
       <header className="text-center p-4">
         <img src={logo} alt={logo} width="75px" />
       </header>
-      <Container className="text-center my-4 py-4">
-        <img
-          src={picture.large}
-          alt={picture.large}
-          className="mb-3 rounded-circle img-thumbnail"
-        />
+      {loading ? (
+        <div className="loading-container text-center mt-4">
+          <h2>Loading...</h2>
+        </div>
+      ) : (
+        <Container className="text-center my-4 py-4">
+          <img
+            src={picture.large}
+            alt={picture.large}
+            className="mb-3 rounded-circle img-thumbnail"
+          />
 
-        {visible.nameVisible && (
-          <>
-            <p className="mb-0">My name is</p>
-            <h4>
-              {name.title} {name.first} {name.last}
-            </h4>
-          </>
-        )}
-
-        {visible.emailVisible && (
-          <>
-            <p className="mb-0">My email is</p>
-            <h4>{email}</h4>
-          </>
-        )}
-
-        {visible.dobVisible && (
-          <>
-            <p className="mb-0">My age is</p>
-            <h4>{dob.age}</h4>
-          </>
-        )}
-
-        {visible.locationVisible && (
-          <>
-            <p className="mb-0">My street is</p>
-            <h4>
-              {location.city} / {location.state} / {location.country}
-            </h4>
-          </>
-        )}
-
-        {visible.phoneVisible && (
-          <>
-            <p className="mb-0"> My phone is is</p>
-            <h4>{phone}</h4>
-          </>
-        )}
-
-        {visible.loginVisible && (
-          <>
-            <p className="mb-0"> My password is is</p>
-            <h4>{login.password}</h4>
-          </>
-        )}
-
-        <div className="icons d-flex justify-content-around mt-2 p-3  ">
-          {gender === "male" ? (
-            <FcBusinessman
-              type="button"
-              className="icon"
-              onMouseOver={() => setVisible({ nameVisible: true })}
-            />
-          ) : (
-            <FcBusinesswoman
-              type="button"
-              className="icon"
-              onMouseOver={() => setVisible({ nameVisible: true })}
-            />
+          {visible.nameVisible && (
+            <>
+              <p className="mb-0">My name is</p>
+              <h4>
+                {name.title} {name.first} {name.last}
+              </h4>
+            </>
           )}
 
-          <FcComments
-            type="button"
-            className="icon"
-            onMouseOver={() => setVisible({ emailVisible: true })}
-          />
-          <FcPlanner
-            type="button"
-            className="icon"
-            onMouseOver={() => setVisible({ dobVisible: true })}
-          />
-          <FcHome
-            type="button"
-            className="icon"
-            onMouseOver={() => setVisible({ locationVisible: true })}
-          />
-          <FcPhone
-            type="button"
-            className="icon"
-            onMouseOver={() => setVisible({ phoneVisible: true })}
-          />
-          <FcLock
-            type="button"
-            className="icon"
-            onMouseOver={() => setVisible({ loginVisible: true })}
-          />
-        </div>
+          {visible.emailVisible && (
+            <>
+              <p className="mb-0">My email is</p>
+              <h4>{email}</h4>
+            </>
+          )}
 
-        <div className="butons d-flex justify-content-around mt-3 mb-5">
-          <Button
-            variant="success"
-            className="px-4 rounded-3"
-            onClick={getUser}
-          >
-            New User
-          </Button>
-          <Button
-            variant="primary"
-            className="px-4 rounded-3"
-            onClick={handleClick}
-          >
-            Add User
-          </Button>
-        </div>
+          {visible.dobVisible && (
+            <>
+              <p className="mb-0">My age is</p>
+              <h4>{dob.age}</h4>
+            </>
+          )}
 
-        <Table responsive>
-          <thead>
-            <tr className="table-title">
-              {Array.from(headers).map((header, index) => (
-                <th key={index}>{header}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {Array.from(user).map((item, i) => (
-              <tr key={i}>
-                <td>
-                  {item.userName.title} {item.userName.first}{" "}
-                  {item.userName.last}
-                </td>
-                <td>{item.userEmail}</td>
-                <td>{item.userPhone}</td>
-                <td>{item.userDob.age}</td>
+          {visible.locationVisible && (
+            <>
+              <p className="mb-0">My street is</p>
+              <h4>
+                {location.city} / {location.state} / {location.country}
+              </h4>
+            </>
+          )}
+
+          {visible.phoneVisible && (
+            <>
+              <p className="mb-0"> My phone is is</p>
+              <h4>{phone}</h4>
+            </>
+          )}
+
+          {visible.loginVisible && (
+            <>
+              <p className="mb-0"> My password is is</p>
+              <h4>{login.password}</h4>
+            </>
+          )}
+
+          <div className="icons d-flex justify-content-around mt-2 p-3  ">
+            {gender === "male" ? (
+              <FcBusinessman
+                type="button"
+                className="icon"
+                onMouseOver={() => setVisible({ nameVisible: true })}
+              />
+            ) : (
+              <FcBusinesswoman
+                type="button"
+                className="icon"
+                onMouseOver={() => setVisible({ nameVisible: true })}
+              />
+            )}
+
+            <FcComments
+              type="button"
+              className="icon"
+              onMouseOver={() => setVisible({ emailVisible: true })}
+            />
+            <FcPlanner
+              type="button"
+              className="icon"
+              onMouseOver={() => setVisible({ dobVisible: true })}
+            />
+            <FcHome
+              type="button"
+              className="icon"
+              onMouseOver={() => setVisible({ locationVisible: true })}
+            />
+            <FcPhone
+              type="button"
+              className="icon"
+              onMouseOver={() => setVisible({ phoneVisible: true })}
+            />
+            <FcLock
+              type="button"
+              className="icon"
+              onMouseOver={() => setVisible({ loginVisible: true })}
+            />
+          </div>
+
+          <div className="butons d-flex justify-content-around mt-3 mb-5">
+            <Button
+              variant="success"
+              className="px-4 rounded-3"
+              onClick={getUser}
+            >
+              New User
+            </Button>
+            <Button
+              variant="primary"
+              className="px-4 rounded-3"
+              onClick={handleClick}
+            >
+              Add User
+            </Button>
+          </div>
+
+          <Table responsive>
+            <thead>
+              <tr className="table-title">
+                {Array.from(headers).map((header, index) => (
+                  <th key={index}>{header}</th>
+                ))}
               </tr>
-            ))}
-          </tbody>
-        </Table>
-      </Container>
+            </thead>
+            <tbody>
+              {Array.from(user).map((item, i) => (
+                <tr key={i}>
+                  <td>
+                    {item.userName.title} {item.userName.first}{" "}
+                    {item.userName.last}
+                  </td>
+                  <td>{item.userEmail}</td>
+                  <td>{item.userPhone}</td>
+                  <td>{item.userDob.age}</td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </Container>
+      )}
     </>
   );
 }

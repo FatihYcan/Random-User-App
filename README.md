@@ -17,7 +17,7 @@ This project is a simple random user application made using React.js and Bootstr
 - CSS3
 - Javascript
 - React
-- Bootsrap
+- Bootstrap
 - Axios
 - SweetAlert2
 - [Randomuser.me API](https://randomuser.me/)
@@ -41,8 +41,11 @@ Bu proje, React.js ve Bootstrap kullanarak yapılmış basit bir rastgele kullan
 - CSS3
 - Javascript
 - React
-- Bootsrap
+- Bootstrap
 - Axios
 - SweetAlert2
+
+[Live](https://fy-random-user-app.netlify.app/)
+
 - [Randomuser.me API](https://randomuser.me/)
 

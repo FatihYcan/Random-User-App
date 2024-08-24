@@ -10,7 +10,8 @@ This project is a simple random user application made using React.js and Bootstr
 - **Adding User:** Users can add the current user to the list by clicking the **Add User** button.
 - **Listing User Information:** The information of the added users is displayed in a table, so users can easily follow the information of the added people.
 - **Cannot Be Added Again Warning:** When a user who has previously been added to the table is tried to be added again, a warning message is displayed on the screen with SweetAlert2.
-
+- **Loading Screen:** 'Loading' text is displayed while the page is loading or new user information is retrieved.
+  
 ## Technologies
 
 - HTML5
@@ -34,6 +35,8 @@ Bu proje, React.js ve Bootstrap kullanarak yapılmış basit bir rastgele kullan
 - **Kullanıcı Ekleme:** Kullanıcılar, **Add User** butonuna tıklayarak mevcut kullanıcıyı listeye ekleyebilirler.
 - **Kullanıcı Bilgilerini Listeleme:** Eklenen kullanıcıların bilgileri bir tablo şeklinde görüntülenir, böylece kullanıcılar eklenen kişilerin bilgilerini kolayca takip edebilirler.
 - **Tekrar Eklenemez Uyarısı:** Tabloya daha önce eklenmiş bir kullanıcı tekrar eklenmeye çalışıldığında, SweetAlert2 ile ekrana bir uyarı mesajı gösterilir.
+- **Loading Ekranı:** Sayfa yüklenirken veya yeni kullanıcı bilgileri çekilirken "Loading" yazısı gösterilir.
+
 
 ## Teknolojiler
 
